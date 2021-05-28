@@ -1,8 +1,26 @@
 import numpy as np
+from picamera.array import PiRGBArray as RGB
+from picamera import PiCamera
+import time
 import cv2
-cap = cv2.VideoCapture(0)
-cap.set(3,640) # set Width
-cap.set(4,480) # set Height
+
+camera = PiCamera()
+camera.resolution = (640,480)
+camera.framerate = 30
+rawCapture = RGB(camera, size = (640,480))
+
+time.sleep(0.1)
+
+for frame in camera.capture_continuous(rawCapture, format="bgr", 
+        use_video_port=True):
+    image = frame.array
+    cv2.imshow(image)
+    key = cv2.waitkey(1) & 0xFF
+    rawCapture.truncate(0)
+    if key == ord('q'):
+        break
+
+
 while(True):
     ret, frame = cap.read()
     frame = cv2.flip(frame, -1) # Flip camera vertically
