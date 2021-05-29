@@ -16,7 +16,7 @@ def ExtractImages(path):
         if con:
             #giving names to each frame and printing while extracting
             name = str(frame_count)+'.jpg'
-            print('Capturing --- '+name)
+            print('Cutting  --> '+name)
   
             # Extracting images and saving with name 
             cv2.imwrite(name, frames) 
@@ -25,5 +25,6 @@ def ExtractImages(path):
         else:
             break
   
-path = r"./Dataset"
+path = r"./Video/six.mp4"
+
 ExtractImages(path)

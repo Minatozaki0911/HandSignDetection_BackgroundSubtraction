@@ -8,9 +8,17 @@ camera = PiCamera()
 camera.resolution = (640,480) 
 camera.framerate = 30 
 rawCapture = RGB(camera, size = (640,480)) 
-faceCascade = cv2.CascadeClassifier('Cascades/haarcascade_frontalface_default.xml')
 pastTime = 0
 elapseTime = 0
+
+try:
+    choice = int(input("CHOOSE MODEL:\n1.HAAR\n2.LPB\n"))
+    if choice == 1:
+        faceCascade = cv2.CascadeClassifier('./Cascades/haarcascade_frontalface_default.xml')
+    if choice == 2:
+        faceCascade = cv2.CascadeClassifier('./Cascades/lbpcascade_frontalface.xml')
+except:
+    print("ERROR ENCOUNTERED")
 
 time.sleep(0.1) 
    
@@ -31,8 +39,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",
     cv2.putText(image, str(int(fps)), (20,50), cv2.FONT_HERSHEY_PLAIN,3, (255,0,0),3)
     cv2.imshow("VIDEO",image)                                   
     key = cv2.waitKey(1) & 0xFF                         
+    #Clear the stream to prepare for next frame
     rawCapture.truncate(0)                                                  
     if key == ord('q'):
+        print("STOPPED")
         break 
 
 cv2.destroyAllWindows()
