@@ -37,8 +37,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",
     fps = 1 / (elapseTime - pastTime)
     pastTime = elapseTime
     cv2.putText(image, str(int(fps)), (20,50), cv2.FONT_HERSHEY_PLAIN,3, (255,0,0),3)
-    cv2.imshow("VIDEO",image)                                   
-    key = cv2.waitKey(1) & 0xFF                         
+    cv2.imshow("VIDEO",image) 
+    key = cv2.waitKey(1) & 0xFF 
     #Clear the stream to prepare for next frame
     rawCapture.truncate(0)                                                  
     if key == ord('q'):
@@ -46,3 +46,4 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",
         break 
 
 cv2.destroyAllWindows()
+camera.close()
