@@ -25,13 +25,13 @@ def drawRectangle(frame):
 
 
 def handHistogram(frame):
-    global handRectX1, handRectY1
+    global rectX1, rectY1
     hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
     roi = np.zeros([90,10,3],dtype=hsv.dtype)
 
     for i in range (totalRectangle):
-        roi[i*10 : i*10+10, 0 : 10] = hsv[handRectX1[i]:handRectX1[i]+10, 
-                                        handRectY1[i]:handRectY1[i]+10]
+        roi[i*10 : i*10+10, 0 : 10] = hsv[rectX1[i]:rectX1[i]+10, 
+                                        rectY1[i]:rectY1[i]+10]
 
     handHist = cv2.calcHist([roi], [0,1],None, [180,256],[0,180,0,256])
     return cv2.normalize(handHist,handHist, 0, 255, cv2.NORM_MINMAX)
