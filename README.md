@@ -11,9 +11,10 @@ Link drive contain model file : https://drive.google.com/drive/folders/10rUQV73o
 4. Store the model folder in the same directory/ folder as the main.py script. Or if you want to use any other model, just open the main.py script and change the *model = model_load("path/to/your/model")*
 5. My notebook is there if you want to have a look at my result, how I trained and evaluated it, or retrained it yourself.
  ```bash
-python3 -m venv cv202
-cd cv202
+python3 -m venv cv202venv
+cd cv202venv
 git clone https://github.com/Minatozaki0911/CV202.git
+cv CV202
 pip install requirement.txt
 python3 main.py
 ```
