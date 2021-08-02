@@ -14,7 +14,7 @@ Link drive contain model file : https://drive.google.com/drive/folders/10rUQV73o
 python3 -m venv cv202venv
 cd cv202venv
 git clone https://github.com/Minatozaki0911/CV202.git
-cv CV202
+cd CV202
 pip install requirement.txt
 python3 main.py
 ```
