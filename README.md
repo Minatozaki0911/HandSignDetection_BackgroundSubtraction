@@ -4,6 +4,7 @@ Model trained on Google Colab's GPU <br>
 Input image taken from live webcam <br>
 <br>
 Link drive contain model file : https://drive.google.com/drive/folders/10rUQV73oLwi1XFerXkNZnDuQVz3XTg6f?usp=sharing
+Trained using this Kaggle dataset : https://www.kaggle.com/gti-upm/leapgestrecog
 ### DOWNLOAD GUIDE
 1. I advise create a virtual environment first to test this project 
 2. Clone this repository or just the main.py alone is fine. 
