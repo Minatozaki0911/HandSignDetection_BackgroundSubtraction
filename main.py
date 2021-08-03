@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
-from keras.models import load_model
+from tensorflow.keras.models import load_model
+import time
 
 prediction = ''
 score = 0
@@ -8,7 +9,7 @@ bgModel = None
 
 gesture_names = ['01_palm', '02_l', '03_fist', '04_fist_moved', '05_thumb', '06_index', '07_ok', '08_palm_moved', '09_c', '10_down']
 
-model = load_model('./CV202Model')
+model = load_model('CV202Model')
 
 def predict(image):
     image = np.array(image, dtype='float32')
@@ -30,7 +31,7 @@ def remove_background(frame):
     return res
 
 cap_region_x_begin = 0.5
-cap_region_y_end = 0.8
+cap_region_y_end = 0.25
 threshold = 60
 blurValue = 41
 bgSubThreshold = 50
@@ -61,11 +62,23 @@ while True:
         blur = cv2.GaussianBlur(gray, (blurValue, blurValue), 0)
         ret, thresh = cv2.threshold(blur, threshold, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
+        # print(img.shape)
+        # print(gray.shape)
+        # print(thresh.shape)
+        cv2.imshow('thresh', thresh)
         if (np.count_nonzero(thresh)/(thresh.shape[0]*thresh.shape[0])>0.2):
             if (thresh is not None):
                 target = np.stack((thresh,) * 3, axis=-1)
-                target = cv2.resize(target, (224, 224))
-                target = target.reshape(1, 224, 224, 3)
+                # print('target shape', target.shape)
+                # target = cv2.resize(target, (320, 120))
+                print('target after resize', target.shape)
+                cv2.imshow('h',target)
+                target = cv2.cvtColor(target, cv2.COLOR_BGR2GRAY)
+                target = cv2.morphologyEx(target, cv2.MORPH_CLOSE, np.ones((5,5), np.uint8))
+                cv2.imshow('target after', target)
+                target = target.reshape(1, 120, 320, 1)
+                
+
                 prediction, score = predict(target)
 
                 print(score,prediction)
