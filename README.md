@@ -6,6 +6,8 @@ Input stream taken from smartphone's IP camera <br>
 Link drive contain model file : [Google Drive](https://drive.google.com/drive/folders/10rUQV73oLwi1XFerXkNZnDuQVz3XTg6f?usp=sharing) <br>
 Trained using this Kaggle dataset : [leapgestrecog](https://www.kaggle.com/gti-upm/leapgestrecog)
 <br>
+Detail can be found in my PowerPoint : [pptx]
+<br>
 Foreground extraction using <b>Skin color detection </b> (HSV and YCrCb) combined with <b>MOG2 background subtractor</b>. I choose this approach instead of feeding everything into a neural network because I don't fond of using black box model which I don't understand.<br>
 Skin color based detection works well against noisy background but unstable against varying lighting condition. Although I use forehead skin as a color reference, this still require meticulous tuning correct offset. (which is the purpose of function controlPanel())<br>
 MOG2 background subtractor using Gaussian model to extract dynamic foreground from still background, which require a very static background or else noise will be introduced in the system. <b>
