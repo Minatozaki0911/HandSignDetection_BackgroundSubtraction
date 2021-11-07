@@ -21,7 +21,6 @@ Foreground extraction using <b>Skin color detection </b> (HSV and YCrCb) combine
 * MOG2 background subtractor using Gaussian model to extract dynamic foreground from still background, which require a very static background or else noise will be introduced in the system. <b>
 Combine both of these methods will theoretically eliminate weakness of each method, but require manual fine-tuning. 
  <img src='https://github.com/Minatozaki0911/CV202/blob/main/media/mask.png' title='Combined mask'></img><br>
-<img src='https://github.com/Minatozaki0911/CV202/blob/main/media/flowchart.png' title='General workflow'></img><br>
 
 ### DOWNLOAD GUIDE
 1. I advise create a virtual environment first to test this project 
@@ -43,3 +42,5 @@ After successfully run the main.py script, you should be able to open your webca
 - press key 'b' to capture the background for background subtraction. This should contain the background only, do not put your face, hand or any non static object when capture the background
 - press key 'r' to reset the background if you accidentally mess up, then recapture it by press 'b' again 
 - press 'q' to exit script
+### FLOWCHART
+<img src='https://github.com/Minatozaki0911/CV202/blob/main/media/flowchart.png' title='General workflow'></img><br>
